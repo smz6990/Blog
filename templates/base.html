@@ -74,7 +74,7 @@
               <ul class="header-info-w3ls">
                 <li>
                   <i class="far fa-envelope"></i>
-                  <a href="mailto:info@example.com">mail@example.com</a>
+                  <a href="#">mail@example.com</a>
                 </li>
                 <li>
                   <i class="fas fa-phone"></i>
@@ -130,7 +130,7 @@
             <div class="col-md-6 logo text-center">
               <h1>
                 <a class="navbar-brand" href="{% url 'website:index' %}">
-                  <i class="fas fa-leaf"></i>Simple Blog</a
+                  <i class="fas fa-leaf"></i>Simple Blog Website</a
                 >
               </h1>
             </div>
@@ -260,7 +260,7 @@
                   <p>Phone : +121 098 8907 9987</p>
                   <p>
                     Email :
-                    <a href="mailto:info@example.com">info@example.com</a>
+                    <a href="#">info@example.com</a>
                   </p>
                 </div>
               </div>
@@ -460,11 +460,11 @@
   
       <!--//model-form-->
       <!-- js -->
-      <script src="js/jquery-2.2.3.min.js"></script>
-      <script src="js/toucheffects.js"></script>
-      <script src="js/modernizr.custom.js"></script>
+      <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+      <script src="{% static 'js/toucheffects.js' %}"></script>
+      <script src="{% static 'js/modernizr.custom.js' %}"></script>
       <!-- carousel -->
-      <script src="js/owl.carousel.js"></script>
+      <script src="{% static 'js/owl.carousel.js' %}"></script>
       <script>
         $(document).ready(function () {
           $(".owl-carousel").owlCarousel({
@@ -511,8 +511,8 @@
       </script>
       <!-- //dropdown nav -->
       <!-- stats -->
-      <script src="js/jquery.waypoints.min.js"></script>
-      <script src="js/jquery.countup.js"></script>
+      <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+      <script src="{% static 'js/jquery.countup.js' %}"></script>
       <script>
         $(".counter").countUp();
       </script>
@@ -538,8 +538,8 @@
       <!-- //password-script -->
   
       <!--/ start-smoth-scrolling -->
-      <script src="js/move-top.js"></script>
-      <script src="js/easing.js"></script>
+      <script src="{% static 'js/move-top.js' %}"></script>
+      <script src="{% static 'js/easing.js' %}"></script>
       <script>
         jQuery(document).ready(function ($) {
           $(".scroll").click(function (event) {
@@ -571,7 +571,7 @@
       </script>
       <!--// end-smoth-scrolling -->
       <!-- /js -->
-      <script src="js/bootstrap.js"></script>
+      <script src="{% static 'js/bootstrap.js' %}"></script>
       <!-- //js -->
     </body>
   </html>
