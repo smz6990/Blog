@@ -67,30 +67,41 @@
             <div class="col-md-6 main_grid_contact">
               <div class="form">
                 <h4 class="mb-4 text-left">Send us a message</h4>
-                <form action="#" method="post">
+                
+                <form action="{% url 'website:contact' %}" method="post">
+                  {% csrf_token %}
                   <div class="form-group">
                     <label class="my-2">Name</label>
                     <input
                       class="form-control"
                       type="text"
-                      name="Name"
+                      name="name"
                       placeholder=""
                       required=""
                     />
                   </div>
                   <div class="form-group">
-                    <label>Email</label>
+                    <label class="my-2">Email</label>
                     <input
                       class="form-control"
                       type="email"
-                      name="Email"
+                      name="email"
                       placeholder=""
                       required=""
                     />
                   </div>
                   <div class="form-group">
-                    <label>Message</label>
-                    <textarea id="textarea" placeholder=""></textarea>
+                    <label class="my-2">Subject</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="subject"
+                      placeholder=""
+                      required=""
+                    />
+                  <div class="form-group">
+                    <label class="my-2">Message</label>
+                    <textarea name="message" id="textarea" placeholder=""></textarea>
                   </div>
                   <div class="input-group1">
                     <input class="form-control" type="submit" value="Submit" />

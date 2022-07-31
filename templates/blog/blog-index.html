@@ -101,8 +101,7 @@
     <!--/single-->
 
     <!-- navbar-->
-    <center>
-    <nav aria-label="...">
+    <nav aria-label="..." class="mb-5">
       <ul class="pagination justify-content-center">
         {% if posts.has_previous %}
           <li class="page-item"><a class="page-link" style="color:#222222" href="?page={{ posts.previous_page_number }}">Previous</a></li>
@@ -133,7 +132,6 @@
         {% endif %}
       </ul>
     </nav>
-  </center>
     <!-- /navbar-->
 
 {% endblock %}
