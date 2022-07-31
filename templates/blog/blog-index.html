@@ -5,6 +5,10 @@
     <title>Blog index</title>
 {% endblock %}
 
+{% block CSS %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+{% endblock %}
+
 {% block content %}
     <!-- /breadcrumb -->
     <ol class="breadcrumb">
@@ -95,4 +99,41 @@
       </div>
     </section>
     <!--/single-->
+
+    <!-- navbar-->
+    <center>
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        {% if posts.has_previous %}
+          <li class="page-item"><a class="page-link" style="color:#222222" href="?page={{ posts.previous_page_number }}">Previous</a></li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+        {% endif %}
+
+        {% for i in posts.paginator.page_range %}
+          {% if posts.number == i %}
+            <li class="page-item active" aria-current="page" >
+              <span class="page-link" style="background-color: #ffc107; border: 2px solid #ffc107 ">{{ i }}</span>
+            </li>
+          {% else %}
+            <li class="page-item"><a class="page-link" style="color:#222222" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if posts.has_next %}
+          <li class="page-item">
+            <a class="page-link" style="color:#222222" href="?page={{ posts.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Next</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </center>
+    <!-- /navbar-->
+
 {% endblock %}

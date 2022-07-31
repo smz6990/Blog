@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load website_tags %}
 {% block head %}
 <title>Home</title>
 {% endblock %}
@@ -15,68 +15,9 @@
         <div class="inner-sec-w3ls-agileits py-lg-5 py-3">
           <h4 class="sub-tittle text-uppercase text-center">What we do</h4>
           <h3 class="tittle text-center mb-lg-5 mb-3">Latest Posts From Our Blog</h3>
-          <ul class="grid cs-style-5 row">
-            <li class="grid-info-img">
-              <figure>
-                <img src="{% static 'images/g1.jpg' %}" class="img-fluid" alt="img03" />
-                <figcaption>
-                  <h3>Vegitables</h3>
-                  <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="grid-info-img">
-              <figure>
-                <img src="{% static 'images/g2.jpg' %}" class="img-fluid" alt="img03" />
-                <figcaption>
-                  <h3>Berries</h3>
-                  <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="grid-info-img">
-              <figure>
-                <img src="{% static 'images/g3.jpg' %}" class="img-fluid" alt="img03" />
-                <figcaption>
-                  <h3>Organic Dairy</h3>
-                  <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="grid-info-img">
-              <figure>
-                <img src="{% static 'images/g4.jpg' %}" class="img-fluid" alt="img03" />
-                <figcaption>
-                  <h3>Seeds</h3>
-                  <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="grid-info-img">
-              <figure>
-                <img src="{% static 'images/g5.jpg' %}" class="img-fluid" alt="img03" />
-                <figcaption>
-                  <h3>Herbs</h3>
-                  <span>Jacob Cummings</span>
-                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="grid-info-img">
-              <figure>
-                <img src="{% static 'images/g6.jpg' %}" class="img-fluid" alt="img03" />
-                <figcaption>
-                  <h3>Farm</h3>
-                  <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
-                </figcaption>
-              </figure>
-            </li>
-          </ul>
+          
+          {% website_latest_posts %}
+
         </div>
       </div>
     </div>
@@ -131,130 +72,9 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 news-grid">
-            <article class="item news fadeIn">
-              <figure class="news-overlay">
-                <figcaption class="overlay">
-                  <div class="like-share-wrapper">
-                    <ul>
-                      <li>
-                        <div class="like-button-wrapper">
-                          <a href="#" class="like_button"
-                            ><i class="far fa-heart"></i
-                          ></a>
-                          <span class="count">98</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="freebie-content">
-                    <span class="date">13/05/2018</span>
-                    <h4>Modern Design Template</h4>
-                    <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
-                        >Read More</a
-                      >
-                    </div>
-                  </div>
-                </figcaption>
-                <img src="{% static 'images/n1.jpg' %}" class="img-fluid" alt="img03" />
-              </figure>
-            </article>
-          </div>
-          <div class="col-md-6 news-grid">
-            <article class="item news fadeIn">
-              <figure class="news-overlay">
-                <figcaption class="overlay">
-                  <div class="like-share-wrapper">
-                    <ul>
-                      <li>
-                        <div class="like-button-wrapper">
-                          <a href="#" class="like_button"
-                            ><i class="far fa-heart"></i
-                          ></a>
-                          <span class="count">57</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="freebie-content">
-                    <span class="date">30/05/2018</span>
-                    <h4>Modern Design Template</h4>
-                    <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
-                        >Read More</a
-                      >
-                    </div>
-                  </div>
-                </figcaption>
-                <img src="{% static 'images/n2.jpg' %}" class="img-fluid" alt="img03" />
-              </figure>
-            </article>
-          </div>
-          <div class="col-md-6 news-grid">
-            <article class="item news fadeIn">
-              <figure class="news-overlay">
-                <figcaption class="overlay">
-                  <div class="like-share-wrapper">
-                    <ul>
-                      <li>
-                        <div class="like-button-wrapper">
-                          <a href="#" class="like_button"
-                            ><i class="far fa-heart"></i
-                          ></a>
-                          <span class="count">49</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="freebie-content">
-                    <span class="date">03/06/2018</span>
-                    <h4>Modern Design Template</h4>
-                    <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
-                        >Read More</a
-                      >
-                    </div>
-                  </div>
-                </figcaption>
-                <img src="{% static 'images/n3.jpg' %}" class="img-fluid" alt="img03" />
-              </figure>
-            </article>
-          </div>
-          <div class="col-md-6 news-grid">
-            <article class="item news fadeIn">
-              <figure class="news-overlay">
-                <figcaption class="overlay">
-                  <div class="like-share-wrapper">
-                    <ul>
-                      <li>
-                        <div class="like-button-wrapper">
-                          <a href="#" class="like_button"
-                            ><i class="far fa-heart"></i
-                          ></a>
-                          <span class="count">85</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="freebie-content">
-                    <span class="date">30/07/2018</span>
-                    <h4>Modern Design Template</h4>
-                    <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
-                        >Read More</a
-                      >
-                    </div>
-                  </div>
-                </figcaption>
-                <img src="{% static 'images/n4.jpg' %}" class="img-fluid" alt="img03" />
-              </figure>
-            </article>
-          </div>
-        </div>
-      </div>
+
+      {% website_popular_posts %}
+
     </section>
     <!-- //story -->
     {% include 'website/website-newsletter.html' %}
