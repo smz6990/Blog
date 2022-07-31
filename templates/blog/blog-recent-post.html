@@ -1,0 +1,23 @@
+{% load static %}
+<div class="single-gd tech-btm">
+    <h4>Recent Post</h4>
+    <div class="blog-grids">
+      <div class="blog-grid-left">
+        <a href="{% url 'blog:index'%}">
+          <img
+            src="{% static 'images/g2.jpg' %}"
+            class="img-fluid rounded"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="blog-grid-right">
+        <h5>
+          <a href="{% url 'blog:index' %}"
+            >Pellentesque dui, non felis. Maecenas male</a
+          >
+        </h5>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>

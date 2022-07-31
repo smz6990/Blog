@@ -22,7 +22,7 @@
                 <figcaption>
                   <h3>Vegitables</h3>
                   <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' %}">Gallery</a>
+                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
                 </figcaption>
               </figure>
             </li>
@@ -32,7 +32,7 @@
                 <figcaption>
                   <h3>Berries</h3>
                   <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' %}">Gallery</a>
+                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
                 </figcaption>
               </figure>
             </li>
@@ -42,7 +42,7 @@
                 <figcaption>
                   <h3>Organic Dairy</h3>
                   <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' %}">Gallery</a>
+                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
                 </figcaption>
               </figure>
             </li>
@@ -52,7 +52,7 @@
                 <figcaption>
                   <h3>Seeds</h3>
                   <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' %}">Gallery</a>
+                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
                 </figcaption>
               </figure>
             </li>
@@ -62,7 +62,7 @@
                 <figcaption>
                   <h3>Herbs</h3>
                   <span>Jacob Cummings</span>
-                  <a href="{% url 'blog:single' %}">Gallery</a>
+                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
                 </figcaption>
               </figure>
             </li>
@@ -72,7 +72,7 @@
                 <figcaption>
                   <h3>Farm</h3>
                   <span>Lorem ipsum </span>
-                  <a href="{% url 'blog:single' %}">Gallery</a>
+                  <a href="{% url 'blog:single' pid=1%}">Gallery</a>
                 </figcaption>
               </figure>
             </li>
@@ -153,7 +153,7 @@
                     <span class="date">13/05/2018</span>
                     <h4>Modern Design Template</h4>
                     <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' %}"
+                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
                         >Read More</a
                       >
                     </div>
@@ -183,7 +183,7 @@
                     <span class="date">30/05/2018</span>
                     <h4>Modern Design Template</h4>
                     <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' %}"
+                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
                         >Read More</a
                       >
                     </div>
@@ -213,7 +213,7 @@
                     <span class="date">03/06/2018</span>
                     <h4>Modern Design Template</h4>
                     <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' %}"
+                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
                         >Read More</a
                       >
                     </div>
@@ -243,7 +243,7 @@
                     <span class="date">30/07/2018</span>
                     <h4>Modern Design Template</h4>
                     <div class="group log-in">
-                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' %}"
+                      <a class="hover-2 btn text-uppercase" href="{% url 'blog:single' pid=1%}"
                         >Read More</a
                       >
                     </div>
@@ -257,24 +257,6 @@
       </div>
     </section>
     <!-- //story -->
-    <!-- /newsletter-->
-    <div class="newsletter py-lg-5 py-4 text-center">
-      <div class="newsletter-inner py-lg-5 py-4">
-        <h3 class="tittle text-center mb-lg-5 mb-3">Don't forget to Sign up</h3>
-        <div class="newsright">
-          <form action="#" method="post" class="d-flex">
-            <input
-              class="form-control"
-              type="email"
-              placeholder=""
-              name="email"
-              required=""
-            />
-            <input class="form-control" type="submit" value="Subscribe" />
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- //newsletter-->
+    {% include 'website/website-newsletter.html' %}
 
     {% endblock %}
