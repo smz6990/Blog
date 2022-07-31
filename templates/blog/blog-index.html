@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load  blog_tags %}
+{% load humanize %}
+
 {% block head %} 
     <title>Blog index</title>
 {% endblock %}
@@ -34,7 +36,7 @@
                       <a href="{% url 'blog:single' pid=post.id %}">
                       <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" /></a>
                       <div class="blog-des blogger">
-                        <span class="entry-date">Published on : {{ post.published_date }}</span>
+                        <span class="entry-date">Published on : {{ post.published_date }} ({{post.published_date|naturaltime}})</span>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span class="entry-date">Author : {{ post.author.username }}</span>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

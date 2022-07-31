@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <div class="tech-btm">
   <h4>Top stories</h4>
   {% for post in posts %}
@@ -20,6 +21,9 @@
       </h5>
       <div class="sub-meta">
         <span> <i class="far fa-clock"></i> {{post.published_date|date:'d M, Y'}}</span>
+      </div>
+      <div class="sub-meta">
+        <span> <i class="far fa-clock"></i> {{post.published_date|naturaltime}}</span>
       </div>
     </div>
   </div>
