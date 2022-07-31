@@ -5,9 +5,13 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 
 def index_view(request,**kwargs):
+    
     posts = Post.objects.filter(published_date__lte=timezone.now())
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name=kwargs['cat_name'] )
+    
+    if kwargs.get('tag_name') != None:
+        posts = posts.filter(tags__name__in=[kwargs['tag_name']] )
     
     posts = Paginator(posts,2)
     page = request.GET.get('page')
@@ -28,6 +32,7 @@ def blog_single_view(request,pid):
     context = {'post':post}
     return render(request,'blog/blog-single.html',context)
 
+
 def search_view(request):
     posts = Post.objects.filter(published_date__lte=timezone.now())
     if request.method == 'GET':
@@ -44,5 +49,4 @@ def search_view(request):
                     
             context = {'posts':posts}
             return render(request,'blog/blog-index.html',context)
-        
     return render(request,'website/index.html')

@@ -37,18 +37,35 @@
                       <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" /></a>
                       <div class="blog-des blogger">
                         <span class="entry-date">Published on : {{ post.published_date }} ({{post.published_date|naturaltime}})</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span class="entry-date">Author : {{ post.author.username }}</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span class="entry-date">{{ post.counted_views }} views</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span class="entry-date">Categories : </span>
-                        {% for cat in post.category.all %}
-                        <span class="entry-date"><a style="color: #222222;" href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a></span>
-                        {% if not forloop.last %}
-                        <span class="entry-date">, </span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        
+                        {% if post.category %}
+                          <span class="entry-date">Categories : </span>
+                          {% for cat in post.category.all %}
+                            <span class="entry-date"><a style="color: #222222;" href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a></span>
+                            {% if not forloop.last %}
+                              <span class="entry-date">, </span>
+                            {% endif %}
+                          {% endfor %}
                         {% endif %}
-                        {% endfor %}
+
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+
+                        {% if post.tags %}
+                          <span class="entry-date">Tags : </span>
+                          {% for tag in post.tags.all %}
+                            <span class="entry-date"><a style="color: #222222;" href="{% url 'blog:tag' tag_name=tag.name %}">{{ tag.name }}</a></span>
+                            {% if not forloop.last %}
+                              <span class="entry-date">, </span>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+
                         <hr>
                         <h5 class="card-title text-uppercase mt-2">
                           <a href="{% url 'blog:single' pid=post.id %}"
@@ -87,7 +104,6 @@
             <aside class="col-lg-4 right-blog-con text-right">
               <div class="right-blog-info text-left">
                 
-                {% include 'blog/blog-tags.html' %}
                 {% include 'blog/blog-newsletter.html' %}
                 {% categories_tag %}
                 {% top_stories_tag %}
