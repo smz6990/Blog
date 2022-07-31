@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load  blog_tags %}
 {% block head %} 
     <title>Blog index</title>
 {% endblock %}
@@ -26,24 +27,25 @@
                 <div class="about-in blog-grid-info text-left">
                   <div class="card img">
                     <div class="card-body img">
-                      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" />
+                      <a href="{% url 'blog:single' pid=post.id %}">
+                      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" /></a>
                       <div class="blog-des blogger">
                         <span class="entry-date">Published on : {{ post.published_date }}</span>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span class="entry-date">Author : <a href="#">{{ post.author.username }}</a></span>
+                        <span class="entry-date">Author : {{ post.author.username }}</span>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span class="entry-date">{{ post.counted_views }} views</span>
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span class="entry-date">Categories : </span>
                         {% for cat in post.category.all %}
-                        <span class="entry-date"><a href="#">{{ cat.name }}</a></span>
+                        <span class="entry-date"><a style="color: #222222;" href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a></span>
                         {% if not forloop.last %}
                         <span class="entry-date">, </span>
                         {% endif %}
                         {% endfor %}
                         <hr>
                         <h5 class="card-title text-uppercase mt-2">
-                          <a href="{% url 'blog:single' pid=1%}"
+                          <a href="{% url 'blog:single' pid=post.id %}"
                             >{{ post.title }}
                           </a>
                         </h5>
@@ -53,7 +55,7 @@
                         <div class="log-in mt-md-3 mt-2">
                           <a
                             class="hover-2 btn text-uppercase"
-                            href="{% url 'blog:single' pid=1%}"
+                            href="{% url 'blog:single' pid=post.id %}"
                             >Read More</a
                           >
                         </div>
@@ -61,6 +63,7 @@
                     </div>
                   </div>
                 </div>
+                <hr>
                 {% empty %}
                 
                 <h5 class="card-title text-uppercase mt-2">
@@ -80,9 +83,9 @@
                 
                 {% include 'blog/blog-tags.html' %}
                 {% include 'blog/blog-newsletter.html' %}
-                {% include 'blog/blog-categories.html' %}
-                {% include 'blog/blog-top-stories.html' %}
-                {% include 'blog/blog-recent-post.html' %} 
+                {% categories_tag %}
+                {% top_stories_tag %}
+                {% recent_post_tag %} 
                 
               </div>
             </aside>

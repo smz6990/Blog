@@ -189,22 +189,22 @@
                       <a class="nav-link" href="{% url 'website:contact' %}">Contact</a>
                     </li>
                   </ul>
-                  <form
-                    action="#"
-                    method="post"
+                <form
+                    action="{% url 'blog:search' %}"
+                    method="get"
                     class="form-inline my-2 my-lg-0 header-search"
                   >
-                    <input
-                      class="form-control"
-                      type="search"
-                      placeholder="Search here..."
-                      name="Search"
-                      required=""
-                    />
-                    <button class="btn btn1 my-2 my-sm-0" type="submit">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </form>
+                  <input
+                    class="form-control"
+                    type="search"
+                    placeholder="Search here..."
+                    name="Search"
+                    required=""
+                  />
+                  <button class="btn btn1 my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
                 </div>
               </nav>
             </header>

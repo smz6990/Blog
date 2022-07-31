@@ -1,47 +1,27 @@
 {% load static %}
 <div class="tech-btm">
   <h4>Top stories</h4>
-
+  {% for post in posts %}
   <div class="blog-grids row mb-3">
     <div class="col-md-5 blog-grid-left">
-      <a href="{% url 'blog:index' %}">
+      <a href="{% url 'blog:single' pid=post.id %}">
         <img
-          src="{% static 'images/g3.jpg' %}"
+          src="{{post.image.url}}"
           class="img-fluid rounded"
-          alt=""
+          alt="{{post.title}}"
         />
       </a>
     </div>
     <div class="col-md-7 blog-grid-right">
       <h5>
-        <a href="{% url 'blog:index' %}"
-          >Pellentesque dui, non felis. Maecenas male non felis
+        <a href="{% url 'blog:single' pid=post.id %}"
+          >{{post.title|truncatewords:6}}
         </a>
       </h5>
       <div class="sub-meta">
-        <span> <i class="far fa-clock"></i> 20 Jan, 2018</span>
+        <span> <i class="far fa-clock"></i> {{post.published_date|date:'d M, Y'}}</span>
       </div>
     </div>
   </div>
-  <div class="blog-grids row mb-3">
-    <div class="col-md-5 blog-grid-left">
-      <a href="{% url 'blog:index' %}">
-        <img
-          src="{% static 'images/g6.jpg' %}"
-          class="img-fluid rounded"
-          alt=""
-        />
-      </a>
-    </div>
-    <div class="col-md-7 blog-grid-right">
-      <h5>
-        <a href="{% url 'blog:index' %}"
-          >Pellentesque dui, non felis. Maecenas male non felis
-        </a>
-      </h5>
-      <div class="sub-meta">
-        <span> <i class="far fa-clock"></i> 20 Feb, 2018</span>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>

@@ -3,18 +3,18 @@
     <h4>Recent Post</h4>
     <div class="blog-grids">
       <div class="blog-grid-left">
-        <a href="{% url 'blog:index'%}">
+        <a href="{% url 'blog:single' pid=post.id %}">
           <img
-            src="{% static 'images/g2.jpg' %}"
+            src="{{post.image.url}}"
             class="img-fluid rounded"
-            alt=""
+            alt="{{post.title}}"
           />
         </a>
       </div>
       <div class="blog-grid-right">
         <h5>
-          <a href="{% url 'blog:index' %}"
-            >Pellentesque dui, non felis. Maecenas male</a
+          <a href="{% url 'blog:single' pid=post.id %}"
+            >{{post.title|truncatewords:6}}</a
           >
         </h5>
       </div>

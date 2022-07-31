@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load  blog_tags %}
 
 {% block head %} 
     <title>
       {{post.title}}
     </title>
 {% endblock %}
+
 
 {% block content %}
 <!-- /breadcrumb -->
@@ -35,13 +37,13 @@
                 <hr>
                 <span class="entry-date">Published on : {{ post.published_date }}</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span class="entry-date">Author : <a href="#">{{ post.author.username }}</a></span>
+                <span class="entry-date">Author : {{ post.author.username }}</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span class="entry-date">{{ post.counted_views }} views</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span class="entry-date">Categories : </span>
                 {% for cat in post.category.all %}
-                <span class="entry-date"><a href="#">{{ cat.name }}</a></span>
+                <span class="entry-date"><a style="color: #222222;" href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a></span>
                 {% if not forloop.last %}
                 <span class="entry-date">, </span>
                 {% endif %}
@@ -136,9 +138,10 @@
 
                 {% include 'blog/blog-tags.html' %}
                 {% include 'blog/blog-newsletter.html' %}
-                {% include 'blog/blog-categories.html' %}
-                {% include 'blog/blog-top-stories.html' %}
-                {% include 'blog/blog-recent-post.html' %}
+                {% categories_tag %}
+                
+                {% top_stories_tag %}
+                {% recent_post_tag %}
               </div>
             </aside>
             <!--//right-->
