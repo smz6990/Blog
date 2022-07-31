@@ -39,10 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'django.contrib.humanize',
+    'django.contrib.sites',
     
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
 ]
+
+# Sites framework settings
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
