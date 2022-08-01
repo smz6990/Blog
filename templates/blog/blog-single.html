@@ -40,7 +40,7 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span class="entry-date">Author : {{ post.author.username }}</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span class="entry-date">{{ post.counted_views }} views</span>
+                <span class="entry-date">{{ post.counted_views }} view{{post.counted_views|pluralize}}</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 
                 {% if post.category %}
