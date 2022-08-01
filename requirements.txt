@@ -4,6 +4,7 @@ django-ckeditor==6.4.2
 django-debug-toolbar==3.5.0
 django-js-asset==2.0.0
 django-robots==5.0
+django-simple-math-captcha==1.1
 django-taggit==3.0.0
 Pillow==9.2.0
 pytz==2022.1

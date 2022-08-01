@@ -5,7 +5,7 @@
       <div class="newsright">
         <form action="{% url 'website:newsletter' %}" method="post" class="d-flex">
           {% csrf_token %}
-          <input type="hidden" name="next" value="{{request.path}}">
+          <input type="hidden" name="next" value="{{request.path}}">          
           <input
             class="form-control"
             type="email"
@@ -14,6 +14,7 @@
             required=""
           />
           <input class="form-control" type="submit" value="Subscribe" />
+          
         </form>
       </div>
     </div>

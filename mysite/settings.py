@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'taggit', 
     'ckeditor',
     'ckeditor_uploader',
+    'simplemathcaptcha',
     
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
