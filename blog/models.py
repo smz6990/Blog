@@ -44,7 +44,7 @@ class Comment(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     
     class Meta:
-        ordering = ['-updated_date']
+        ordering = ['updated_date']
     
     def __str__(self):
         return '{} on {}'.format(self.name,self.post.title)

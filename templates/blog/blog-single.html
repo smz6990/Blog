@@ -82,13 +82,15 @@
                   <div class="media-body">
                     <h5 class="mt-0">{{comment.name}}</h5>
                     <p>
-                      {{comment.message}}
+                      {{comment.updated_date|naturaltime}}
+                      <br>
+                      {{comment.message}}                      
                     </p>
                   </div>
                 </div>
                 {% empty %}
                 <div class="media-body">
-                  <h5 class="mt-0">No comment yet, be the first!</h5>
+                  <h5 class="mt-0">No comments yet, be the first!</h5>
                 </div>
                 {% endfor %}
               </div>
@@ -97,36 +99,39 @@
               <div class="comment-top">
                 <h4>Leave a Comment</h4>
                 <div class="comment-bottom">
-                  <form action="#" method="post">
+                  <form action="{% url 'blog:single' pid=post.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="post" value="{{post.id}}">
                     <input
                       class="form-control"
                       type="text"
-                      name="Name"
+                      name="name"
                       placeholder="Name"
                       required=""
                     />
                     <input
                       class="form-control"
                       type="email"
-                      name="Email"
+                      name="email"
                       placeholder="Email"
                       required=""
                     />
-
                     <input
                       class="form-control"
                       type="text"
-                      name="Subject"
+                      name="subject"
                       placeholder="Subject"
                       required=""
                     />
-
                     <textarea
                       class="form-control"
-                      name="Message"
+                      name="message"
                       placeholder="Message..."
                       required=""
                     ></textarea>
+                    <div class="form-group">
+                      <label class="my-2">{{form.captcha}}</label>
+                    </div>
                     <button type="submit" class="btn btn-primary submit">
                       Submit
                     </button>

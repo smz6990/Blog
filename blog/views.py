@@ -1,6 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils import timezone
 from blog.models import Post,Comment
+from blog.forms import CommentForm
+from django.contrib import messages
+
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 
@@ -27,10 +31,21 @@ def index_view(request,**kwargs):
 
 
 def blog_single_view(request,pid):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Comment Submited successfully and after approval will be shown in comment section')
+        else:
+            messages.error(request,'Something went wrong')
+            messages.error(request,form.errors)
+        return redirect(reverse('blog:single',args=[pid]))
+
     posts = Post.objects.filter(published_date__lte=timezone.now())
     post = get_object_or_404(posts,pk=pid)
     comments = Comment.objects.filter(post=post.id,approved=True)
-    context = {'post':post,'comments':comments}
+    form = CommentForm()
+    context = {'post':post,'comments':comments,'form':form}
     return render(request,'blog/blog-single.html',context)
 
 
