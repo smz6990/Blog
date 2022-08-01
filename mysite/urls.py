@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
-
+from blog.feeds import LatestEntriesFeed
 
 
 sitemaps = {
@@ -40,7 +40,7 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('captcha/', include('captcha.urls')),
-    
+    path('rss/feed/', LatestEntriesFeed()),
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
