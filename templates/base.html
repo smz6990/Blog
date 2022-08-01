@@ -140,6 +140,25 @@
                 >
               </h1>
             </div>
+
+            {% if request.user.is_authenticated %}
+
+            <div class="col-md-3 login-right-img text-center">
+              <a
+                class="request text-uppercase"
+                href="#"
+                data-toggle="modal"
+                >{{request.user.username}}</a
+              >
+              <a
+                class="request text-uppercase"
+                href="{% url 'registration:signout' %}?next={{request.path}}"
+                data-toggle="modal"
+                >Sign Out</a
+              >
+            </div>
+
+            {% else %}
             <div class="col-md-3 login-right-img text-center">
               <a
                 class="request text-uppercase"
@@ -156,6 +175,8 @@
                 >Sign Up</a
               >
             </div>
+            {% endif %}
+
           </div>
         </div>
         <div class="header-bg">
@@ -351,6 +372,9 @@
                       placeholder="Password"
                       required=""
                     />
+                  </div>
+                  <div class="form-group">
+                    <label class="my-2">{{form.captcha}}</label>
                   </div>
                   <input type="hidden" name="next" value="{{request.path}}">
                   

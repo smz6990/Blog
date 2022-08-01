@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
+from registration.forms import UserAuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
@@ -8,7 +9,7 @@ def signin_view(request):
     next = request.POST.get('next','/')
     if not request.user.is_authenticated:
         if request.method == 'POST':
-            form = AuthenticationForm(request=request,data=request.POST)
+            form = UserAuthenticationForm(request=request,data=request.POST)
             if form.is_valid():
                 username = form.cleaned_data.get('username')
                 password = form.cleaned_data.get('password')
