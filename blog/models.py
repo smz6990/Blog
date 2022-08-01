@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
-
+# from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -11,7 +12,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = RichTextUploadingField()
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     image = models.ImageField(upload_to='blog/post_pic/',default='blog/post_pic/default.jpg')
     category = models.ManyToManyField(Category) 

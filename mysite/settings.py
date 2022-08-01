@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'robots',
     'debug_toolbar',
     'taggit', 
+    'ckeditor',
+    'ckeditor_uploader',
     
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
@@ -52,6 +54,13 @@ INSTALLED_APPS = [
 
 # Sites framework settings
 SITE_ID = 1
+
+# ckeditor settings
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_BROWSE_SHOW_DIRS = True
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

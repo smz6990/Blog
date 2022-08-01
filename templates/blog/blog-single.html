@@ -70,7 +70,7 @@
                   <a href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a>
                 </h3>
                 <p>
-                  {{post.content}}
+                  {{post.content|safe}}
                 </p>
               </div>
 
