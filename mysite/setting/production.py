@@ -19,3 +19,21 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 SESSION_COOKIE_SECURE = True
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# we have to change the BASE_DIR to our public_html file on our site
+
+STATIC_ROOT = BASE_DIR / 'static'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'statics',
+]
