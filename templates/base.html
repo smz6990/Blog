@@ -20,9 +20,8 @@
         window.scrollTo(0, 1);
       }
     </script>
-    {% block CSS %}
-    {% endblock %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link
       href="{% static 'css/bootstrap.css' %}"
       rel="stylesheet"
@@ -45,13 +44,6 @@
       href="{% static 'css/owl.theme.css' %}"
       type="text/css"
       media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/owl.carousel.css' %}"
-      type="text/css"
-      media="screen"
-      property=""
     />
     <link
       href="{% static 'css/minimal-slider.css' %}"
@@ -147,33 +139,44 @@
               <a
                 class="request text-uppercase"
                 href="#"
-                data-toggle="modal"
                 >{{request.user.username}}</a
               >
               <a
                 class="request text-uppercase"
                 href="{% url 'registration:signout' %}?next={{request.path}}"
-                data-toggle="modal"
                 >Sign Out</a
               >
             </div>
 
             {% else %}
             <div class="col-md-3 login-right-img text-center">
+              {% if next %}
               <a
-                class="request text-uppercase"
-                href="#"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-                >Sign In</a
-              >
-              <a
-                class="request text-uppercase"
-                href="#"
-                data-toggle="modal"
-                data-target="#exampleModalCenter2"
-                >Sign Up</a
-              >
+                  class="request text-uppercase"
+                 href="{% url 'registration:signin' %}?next={{next}}"
+                 >Sign In</a
+                >
+              {% else %}
+                <a
+                  class="request text-uppercase"
+                 href="{% url 'registration:signin' %}?next={{request.path}}"
+                 >Sign In</a
+                >
+              {% endif %}
+                
+              {% if next %}
+               <a
+                   class="request text-uppercase"
+                   href="{% url 'registration:signup' %}?next={{next}}"
+                  >Sign Up</a
+                 >
+              {% else %}
+                <a
+                  class="request text-uppercase"
+                  href="{% url 'registration:signup' %}?next={{request.path}}"
+                 >Sign Up</a
+                >
+             {% endif %}
             </div>
             {% endif %}
 
@@ -326,244 +329,11 @@
       </footer>
       <!-- //footer -->
   
-      <!--model-forms-->
-      <!--/Login-->
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header text-center">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="login px-4 mx-auto mw-100">
-                <h5 class="text-center mb-4">Login Now</h5>
-                <form action="{% url 'registration:signin' %}" method="post"> 
-                  {% csrf_token %}
-                  <div class="form-group">
-                    <label class="mb-2">Username</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="username"
-                      aria-describedby="usernameHelp"
-                      placeholder="Username"
-                      required=""
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="mb-2">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      class="form-control"
-                      placeholder="Password"
-                      required=""
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="my-2">{{form.captcha}}</label>
-                  </div>
-                  <input type="hidden" name="next" value="{{request.path}}">
-                  
-                  <button type="submit" class="btn btn-primary submit mb-4">
-                    Sign In
-                  </button>
-                  <p class="text-center pb-4">
-                    <a
-                      href="#"
-                      data-toggle="modal"
-                      data-target="#exampleModalCenter2"
-                    >
-                      Don't have an account?</a
-                    >
-                  </p>
-                  <p class="text-center pb-4">
-                    <a
-                      href="{% url 'registration:reset_password' %}"
-                      data-toggle="modal"
-                    >
-                      Forget your password? Click here to reset password</a
-                    >
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--//Login-->
-      <!--/Register-->
-      <div
-        class="modal fade"
-        id="exampleModalCenter2"
-        tabindex="-1"
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header text-center">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="login px-4 mx-auto mw-100">
-                <h5 class="text-center mb-4">Register Now</h5>
-                <form action="{% url 'registration:signup' %}" method="post">
-                  {% csrf_token %}
-                  <div class="form-group">
-                    <label>First name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationDefault01"
-                      placeholder="First Name"
-                      name="first_name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label>Last name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationDefault02"
-                      placeholder="Last Name"
-                      name="last_name"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationDefault02"
-                      placeholder="Username"
-                      required=""
-                      name="username"
-                    />
-                  </div>
-                  <input type="hidden" name="next" value="{{request.path}}">
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input
-                      type="Email"
-                      class="form-control"
-                      id="validationDefault02"
-                      placeholder="Email"
-                      required=""
-                      name="email"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label class="mb-2">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password1"
-                      placeholder="Password"
-                      required=""
-                      name="password1"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password2"
-                      placeholder="Confirm Password"
-                      required=""
-                      name="password2"
-                    />
-                  </div>
-  
-                  <button type="submit" class="btn btn-primary submit mb-4">
-                    Register
-                  </button>
-                  <p class="text-center pb-4">
-                    <a>By clicking Register, I agree to your terms</a>
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--//Register-->
-  
-      <!--//model-form-->
       <!-- js -->
       <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
       <script src="{% static 'js/toucheffects.js' %}"></script>
       <script src="{% static 'js/modernizr.custom.js' %}"></script>
-      <!-- carousel -->
-      <script src="{% static 'js/owl.carousel.js' %}"></script>
-      <script>
-        $(document).ready(function () {
-          $(".owl-carousel").owlCarousel({
-            loop: true,
-            margin: 10,
-            responsiveClass: true,
-            responsive: {
-              0: {
-                items: 1,
-                nav: true,
-              },
-              600: {
-                items: 1,
-                nav: false,
-              },
-              900: {
-                items: 1,
-                nav: false,
-              },
-              1000: {
-                items: 2,
-                nav: true,
-                loop: false,
-                margin: 20,
-              },
-            },
-          });
-        });
-      </script>
-      <!-- //carousel -->
-      <script>
-        $(document).ready(function () {
-          $(".dropdown").hover(
-            function () {
-              $(".dropdown-menu", this).stop(true, true).slideDown("fast");
-              $(this).toggleClass("open");
-            },
-            function () {
-              $(".dropdown-menu", this).stop(true, true).slideUp("fast");
-              $(this).toggleClass("open");
-            }
-          );
-        });
-      </script>
-      <!-- //dropdown nav -->
+      
       <!-- stats -->
       <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
       <script src="{% static 'js/jquery.countup.js' %}"></script>
@@ -571,26 +341,6 @@
         $(".counter").countUp();
       </script>
       <!-- //stats -->
-      <!-- password-script -->
-      <script>
-        window.onload = function () {
-          document.getElementById("password1").onchange = validatePassword;
-          document.getElementById("password2").onchange = validatePassword;
-        };
-  
-        function validatePassword() {
-          var pass2 = document.getElementById("password2").value;
-          var pass1 = document.getElementById("password1").value;
-          if (pass1 != pass2)
-            document
-              .getElementById("password2")
-              .setCustomValidity("Passwords Don't Match");
-          else document.getElementById("password2").setCustomValidity("");
-          //empty string means no validation error
-        }
-      </script>
-      <!-- //password-script -->
-  
       <!--/ start-smoth-scrolling -->
       <script src="{% static 'js/move-top.js' %}"></script>
       <script src="{% static 'js/easing.js' %}"></script>

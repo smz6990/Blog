@@ -7,10 +7,6 @@
     <title>Blog index</title>
 {% endblock %}
 
-{% block CSS %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-{% endblock %}
-
 {% block content %}
     <!-- /breadcrumb -->
     <ol class="breadcrumb">
@@ -132,7 +128,7 @@
         {% for i in posts.paginator.page_range %}
           {% if posts.number == i %}
             <li class="page-item active" aria-current="page" >
-              <span class="page-link" style="background-color: #ffc107; border: 2px solid #ffc107 ">{{ i }}</span>
+              <span class="page-link" style="background-color: #ffc107; border: 1px solid #ffc107 ">{{ i }}</span>
             </li>
           {% else %}
             <li class="page-item"><a class="page-link" style="color:#222222" href="?page={{ i }}">{{ i }}</a></li>
