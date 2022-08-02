@@ -20,10 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%9+bmn&aa!@&s@$wolzp785o+89xad2oahhg9y(cf+m5^x040p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -46,7 +45,6 @@ INSTALLED_APPS = [
     
     'captcha',
     'robots',
-    'debug_toolbar',
     'taggit', 
     'ckeditor',
     'ckeditor_uploader',
@@ -63,9 +61,6 @@ MULTI_CAPTCHA_ADMIN = {
 }
 
 
-# Sites framework settings
-SITE_ID = 2
-
 # ckeditor settings
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -73,7 +68,6 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,7 +78,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
-     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -111,12 +104,6 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -157,14 +144,9 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'statics',
-]
 
 
 # Default primary key field type
@@ -184,8 +166,3 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
  }
 
-
-# django debug toolbar settings
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
