@@ -22,6 +22,7 @@
     <div class="form-group row">
         <div class="login px-4 mx-auto mw-100">
             <h5 class="text-center mb-4">Login Now</h5>
+            <hr>
             <form action="{% url 'registration:signin' %}" method="post"> 
                 {% csrf_token %}
                 <div class="form-group">
@@ -64,7 +65,7 @@
             </p>
             <p class="text-center pb-4">
                 <a
-                    href="{% url 'registration:reset_password' %}"
+                    href="{% url 'registration:password_reset' %}"
                 >
                 Forget your password? Click here to reset password</a
                 >

@@ -17,6 +17,7 @@
   <div class="form-group row">
     <div class="login px-4 mx-auto mw-100">
       <h5 class="text-center mb-4">Register Now</h5>
+      <hr>
       <form action="{% url 'registration:signup' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
