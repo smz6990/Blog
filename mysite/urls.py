@@ -24,6 +24,7 @@ from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 from blog.feeds import LatestEntriesFeed
 
+from mysite.views import maintenance_view
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -35,6 +36,8 @@ urlpatterns = [
     path('',include('website.urls')),
     path('blog/',include('blog.urls')),
     path('registration/',include('registration.urls')),
+    path('maintenance/',maintenance_view,name='maintenance'),
+    
     
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', include('robots.urls')),

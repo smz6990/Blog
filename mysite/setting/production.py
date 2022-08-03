@@ -3,6 +3,11 @@ from mysite.settings import *
 
 DEBUG = False
 
+MAINTENANCE_MODE = False
+
+if MAINTENANCE_MODE:
+    MIDDLEWARE.append('mysite.middleware.MaintenanceModeMiddleware')
+
 with open('secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
