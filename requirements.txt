@@ -2,7 +2,9 @@ asgiref==3.5.2
 certifi==2022.6.15
 charset-normalizer==2.1.0
 Django==3.2.14
+django-appconf==1.0.5
 django-ckeditor==6.4.2
+django-compressor==4.0
 django-debug-toolbar==3.5.0
 django-js-asset==2.0.0
 django-multi-captcha-admin==2.0.0
@@ -14,6 +16,8 @@ django-taggit==3.0.0
 idna==3.3
 Pillow==9.2.0
 pytz==2022.1
+rcssmin==1.1.0
 requests==2.28.1
+rjsmin==1.2.0
 sqlparse==0.4.2
 urllib3==1.26.11

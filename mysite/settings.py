@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'simplemathcaptcha',
+    'compressor',
     
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
@@ -166,3 +167,11 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
  }
 
+
+# django Compressor setting
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
