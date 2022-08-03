@@ -12,7 +12,7 @@ INSTALLED_APPS.append('debug_toolbar')
 # Sites framework settings
 SITE_ID = 2
 
-MIDDLEWARE.insert(0,"debug_toolbar.middleware.DebugToolbarMiddleware")
+MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
 
 # django debug toolbar settings
 INTERNAL_IPS = [
