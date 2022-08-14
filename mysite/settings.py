@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'simplemathcaptcha',
-    'compressor',
     
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
@@ -153,6 +152,12 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -170,33 +175,3 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
-
-
-# django Compressor setting
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
-}
-
-COMPRESS_ENABLED = True
-COMPRESS_CSS_HASHING_METHOD = 'content'
-COMPRESS_FILTERS = {
-    'css':[
-        'compressor.filters.css_default.CssAbsoluteFilter',
-        'compressor.filters.cssmin.rCSSMinFilter',
-    ],
-    'js':[
-        'compressor.filters.jsmin.JSMinFilter',
-    ]
-}
-HTML_MINIFY = True
-KEEP_COMMENTS_ON_MINIFYING = True
