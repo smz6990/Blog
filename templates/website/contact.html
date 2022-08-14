@@ -70,6 +70,37 @@
                 
                 <form action="{% url 'website:contact' %}" method="post">
                   {% csrf_token %}
+                  {% if request.user.is_authenticated %}
+
+                  <div class="form-group">
+                    <label class="my-2">Name</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="name"
+                      placeholder="{{request.user.username}}"
+                      required=""
+                      disabled
+                      value="{{request.user.username}}"
+
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="my-2">Email</label>
+                    <input
+                      class="form-control"
+                      type="email"
+                      name="email"
+                      placeholder="{{request.user.email}}"
+                      required=""
+                      disabled
+                      value="{{request.user.email}}"
+
+                    />
+                  </div>
+
+                  {% else %}
+
                   <div class="form-group">
                     <label class="my-2">Name</label>
                     <input
@@ -90,6 +121,9 @@
                       required=""
                     />
                   </div>
+
+                  {% endif %}
+
                   <div class="form-group">
                     <label class="my-2">Subject</label>
                     <input
