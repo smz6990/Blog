@@ -43,6 +43,8 @@ def blog_single_view(request,pid):
 
     posts = Post.objects.filter(published_date__lte=timezone.now())
     post = get_object_or_404(posts,pk=pid)
+    post.counted_views +=1
+    post.save()
     comments = Comment.objects.filter(post=post.id,approved=True)
     form = CommentForm()
     context = {'post':post,'comments':comments,'form':form}
