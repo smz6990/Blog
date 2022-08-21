@@ -5,6 +5,7 @@ charset-normalizer==2.1.0
 Django==3.2.14
 django-appconf==1.0.5
 django-ckeditor==6.4.2
+django-compressor==4.0
 django-debug-toolbar==3.5.0
 django-htmlmin==0.11.0
 django-js-asset==2.0.0
@@ -17,6 +18,7 @@ django-taggit==3.0.0
 html5lib==1.1
 idna==3.3
 Pillow==9.2.0
+mysqlclient
 python-memcached==1.59
 pytz==2022.1
 rcssmin==1.1.0
@@ -27,4 +29,3 @@ soupsieve==2.3.2.post1
 sqlparse==0.4.2
 urllib3==1.26.11
 webencodings==0.5.1
-psycopg2

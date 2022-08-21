@@ -7,6 +7,9 @@ MAINTENANCE_MODE = False
 
 if MAINTENANCE_MODE:
     MIDDLEWARE.append('mysite.middleware.MaintenanceModeMiddleware')
+    
+ALLOWED_HOSTS = ['salehmzh.ir','www.salehmzh.ir','127.0.0.1']
+
 
 with open('mysite/setting/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
@@ -26,15 +29,24 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = True
 
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
+        'NAME': 'djangodatabase',
+        'USER': 'dbadmin',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
-        'PORT': '',
+    }
+}
+
+
+DATABASES = {
+    'default': {     
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'salehmzh_wizardblog',
+        'USER': 'salehmzh_salehwizardsaleh',
+        'PASSWORD': '--{_mUts](ME',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
